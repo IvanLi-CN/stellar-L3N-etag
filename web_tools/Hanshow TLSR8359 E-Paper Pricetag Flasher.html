@@ -10,7 +10,7 @@
 	<a href="https://github.com/atc1441/ATC_TLSR_Paper" target="_blank">Firmware GitHub Repo</a><br>
 	<a href="https://github.com/atc1441/ATC_TLSR_Paper/blob/main/USB_UART_Flashing_connection.jpg" target="_blank">Flashing Pinout</a>
 	<br><br>
-	1. USB-COM: <input type="button" id="butOpen" value="Close">
+	1. USB-COM: <input type="button" id="butOpen" value="Open">
 	Baud: <select id="ubaud" title="Optimal: 460800 baud"><option value="115200">115200</option><option value="230400">230400</option><option value="460800" selected="">460800</option><option value="921600">921600</option><option value="1500000">1500000</option><option value="2000000">2000000</option></select>
 	Atime: <select id="uatime" title="Activation time: Set above than Advertising interval or use manual power reset"><option value="0">0 ms</option><option value="100">100 ms</option><option value="1000">1 sec</option><option value="2000">2 sec</option><option value="3000" selected="">3 sec</option><option value="4000">4 sec</option><option value="8000">8 sec</option><option value="16000">16 sec</option></select>
 	<br><br>
@@ -186,12 +186,15 @@ async function DeviceStop() {
 	return serialController.close();
 }
 connect.addEventListener('pointerdown', () => {
+	console.log("TEST");
 	if(connect.value == 'Close') {
 		DeviceStop();
 	} else {
 		serialController.init();
 	}
 });
+
+	console.log("TEST", connect);
 fwriter.onclick = async function() {
 	fwriter.disabled = true;
 	bunlock.disabled = true;
